@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.my-card-body {
+  background-color: red;
+}
+.my-card-header {
+  background-color: red;
+}
