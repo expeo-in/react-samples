@@ -20,7 +20,7 @@ export default function Form2() {
       <form className="col-6" onSubmit={handleSubmit(onFormSubmit)}>
         <div className="mb-3">
           <label className="form-label" htmlFor="name">
-            Name
+            Name*
           </label>
           <input
             type="text"
@@ -30,6 +30,7 @@ export default function Form2() {
             autoComplete="off"
             {...register("name", { required: true, minLength: 3 })}
           ></input>
+          <div>Minium 3 chars</div>
           {errors.name?.type === "required" && (
             <div className="text-danger">Name is required</div>
           )}
@@ -55,11 +56,7 @@ export default function Form2() {
             <div className="text-danger">Age should be min 18</div>
           )}
         </div>
-        <button
-          type="submit"
-          disabled={errors.isDirty && !isValid}
-          className="btn btn-primary"
-        >
+        <button type="submit" disabled={!isValid} className="btn btn-primary">
           Submit
         </button>
       </form>
