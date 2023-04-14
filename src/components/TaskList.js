@@ -1,24 +1,25 @@
-import { useState, useReducer } from "react";
+import { useState, useReducer, useContext } from "react";
 import { useImmerReducer } from "use-immer";
 import TasksReducer from "./TaskReducer";
 import TasksReducerUsingImmer from "./TasksReducerUsingImmer";
+import { TasksContext } from "../TaskContext";
 
 let next = 0;
 
 export default function TaskList() {
-  const initialTasks = [
-    {
-      id: 1,
-      title: "Buy Groceries",
-      done: false,
-    },
-    {
-      id: 2,
-      title: "Read React",
-      done: true,
-    },
-  ];
-
+  // const initialTasks = [
+  //   {
+  //     id: 1,
+  //     title: "Buy Groceries",
+  //     done: false,
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "Read React",
+  //     done: true,
+  //   },
+  // ];
+  const initialTasks = useContext(TasksContext);
   // const [tasks, setTasks] = useState(initialTasks);
   //const [tasks, dispatch] = useReducer(TasksReducer, initialTasks);
   const [tasks, dispatch] = useImmerReducer(

@@ -34,11 +34,30 @@ import Report from "./components/Report";
 import Dashboard from "./components/Dashboard";
 import UserDetail from "./components/UserDetail";
 import TaskList from "./components/TaskList";
+import ParentComponent from "./components/ParentComponent";
+import { UserContext } from "./components/UserContext";
+import { TasksContext } from "./TaskContext";
 
 function App() {
   const [qty, setQty] = useState(0);
-  const [name, setName] = useState("test");
+  const [name, setName] = useState("ganesh kumar");
   const [date, setDate] = useState(new Date().toString());
+  const [user, setUser] = useState({
+    username: "ganesh",
+    email: "ganesh@gmail.com",
+  });
+  const [tasks, setTasks] = useState([
+    {
+      id: 1,
+      title: "Buy Groceries",
+      done: false,
+    },
+    {
+      id: 2,
+      title: "Read React",
+      done: true,
+    },
+  ]);
 
   const handleAddMore = () => {
     setQty(qty + 1);
@@ -76,8 +95,14 @@ function App() {
 
   return (
     <>
+      <UserContext.Provider value={user}>
+        <TasksContext.Provider value={tasks}>
+          <ParentComponent></ParentComponent>
+        </TasksContext.Provider>
+      </UserContext.Provider>
+      {/* 
       <TaskList></TaskList>
-      {/* <ul>
+      <ul>
         <li>
           <Link to="/home">Home</Link>
         </li>
