@@ -8,6 +8,7 @@ export default function Counter() {
   const [counter, setCounter] = useState(0); //counterData1[0]
   const [firstName, setFirstName] = useState("ganesh"); //counterData[1]
   const [lastName, setLastName] = useState("kumar"); //counterData[2]
+  const [msg, setMsg] = useState("");
 
   const [person, setPerson] = useState({
     firstName: "ganesh",
@@ -24,12 +25,18 @@ export default function Counter() {
 
   return (
     <>
-      <p>Counter - {counter}</p>
-      <p>
+      <h2>Counter</h2>
+      <p>{counter}</p>
+      <button onClick={handleClick}>Increment</button>
+      {/* <p>
         FirstName - {firstName} {lastName}
       </p>
       <p>LastName - {lastName}</p>
-      <button onClick={handleClick}>Increment</button>
+      
+      <div>
+        <input type="text" onChange={(e) => setMsg(e.target.value)}></input>
+      </div>
+      <div>{msg}</div> */}
     </>
   );
 }

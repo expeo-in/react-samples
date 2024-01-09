@@ -4,13 +4,20 @@ import User from "./User";
 
 export default function UsersUsingAxios() {
   const [users, setUsers] = useState([]);
+  const [error, setError] = useState("");
 
   const nameRef = useRef(null);
 
   useEffect(() => {
-    axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
-      setUsers(res.data);
-    });
+    axios
+      .get("https://jsonplaceholder.typicode.com/usersx")
+      .then((res) => {
+        setUsers(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(err.message);
+      });
   }, []);
 
   const addUser = () => {
@@ -42,6 +49,7 @@ export default function UsersUsingAxios() {
 
   return (
     <>
+      {error && <p>{error}</p>}
       User: <input type="text" ref={nameRef} />
       <button onClick={addUser}>Add</button>
       <ul className="list-group">
